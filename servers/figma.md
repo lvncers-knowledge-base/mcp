@@ -4,6 +4,71 @@ https://cursor.com/marketplace/figma
 
 https://github.com/figma/mcp-server-guide/blob/a742f0a700a7772ff5ed85f7c9fc1dad5afa9fcc/.mcp.json
 
+Figma MCPについて調べるね！わかった！まとめるね〜。Figma MCPはめちゃくちゃ便利だから、ちゃんと教えるよ！
+
+---
+
+## Figma MCP (Dev Mode MCPサーバー) の使い方
+
+### そもそも何ができるの？
+
+FigmaのデザインデータをCursorやVS CodeなどのAIエディタに直接連携して、デザインに基づいたコード生成ができるようになる機能だよ。デザイン→コード変換を自動化できて超便利！
+
+---
+
+### ⚠️ まず確認：使える条件
+
+Dev Mode MCPサーバーは**有料プラン（プロフェッショナル・ビジネス・エンタープライズ）のDevまたはフルシート**でのみ利用可能。あと、VS CodeやCursorなどMCPをサポートするエディタが必要。
+
+---
+
+### 接続方法（デスクトップ版）
+
+**① Figmaデスクトップアプリで新規ファイルを開いてDev Modeに切り替え → 右サイドバーの「デスクトップMCPサーバーを有効にする」をクリック**
+
+**② エディタ側の設定（Cursorの場合）**
+
+Cursor Settings → Tools & MCP → New MCP Server を開いて、`mcp.json` に以下を追加：
+
+```json
+{
+  "mcpServers": {
+    "Figma Desktop": {
+      "url": "http://127.0.0.1:3845/mcp"
+    }
+  }
+}
+```
+
+---
+
+### 使えるツール一覧
+
+接続すると以下のようなツールが使える：
+
+| ツール名 | できること |
+|---|---|
+| `get_design_context` | デザインのコンテキスト取得（デフォルトでReact + Tailwindのコード生成）|
+| `get_variable_defs` | 変数やスタイルを取得 |
+| `get_screenshot` | 選択範囲のスクリーンショット取得 |
+| `get_metadata` | レイヤーのID・名前・サイズなどの情報取得 |
+| `create_design_system_rules` | コード変換用のルールファイル作成 |
+| `get_figjam` | FigJamの図をXML形式で取得 |
+
+---
+
+### 実際の使い方の流れ
+
+FigmaのDev Modeでレイヤーを選択すると、プロンプトの例を提示してくれるので、それをCursorのチャットに貼り付けて実行するだけ！
+
+### 精度を上げるコツ
+
+色・間隔・角丸・タイポグラフィにFigma variablesを使っておくと、AIがデザインの意図を正確に読み取れてコード生成の精度が上がるよ！
+
+---
+
+どのエディタ使ってる？CursorとかVS Code、GitHub Copilotとか、環境に合わせてもう少し詳しく教えられるよ〜！
+
 わかるわかる！最初期は本当に使いにくかったよね笑　JS直接書かないといけないのとかしんどすぎる。
 
 今どのくらい良くなったか調べてみるね！めっちゃ進化してた！！これは確かに別物になってるわ。まとめるね。
